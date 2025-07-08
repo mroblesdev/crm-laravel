@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use SweetAlert2\Laravel\Swal;
@@ -70,6 +71,15 @@ class TaskController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function show(Task $task): JsonResponse
+    {
+        $task->load('client');
+        return response()->json($task);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Task $task)
@@ -116,5 +126,17 @@ class TaskController extends Controller
         ]);
 
         return redirect()->route('tasks.index');
+    }
+
+    // Muestra la vista con el calendario
+    public function calendar()
+    {
+        return view('tasks.calendar');
+    }
+
+    public function events()
+    {
+        $tasks = Task::select(['id', 'title', 'due_date as start'])->get();
+        return response()->json($tasks);
     }
 }

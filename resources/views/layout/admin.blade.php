@@ -10,6 +10,7 @@
     <title>Dashboard - CRM</title>
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet" />
+    @stack('style')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
@@ -61,6 +62,8 @@
     </div>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
+
+    @stack('script')
 </body>
 
 </html>

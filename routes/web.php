@@ -28,5 +28,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('clients.followups', FollowUpsController::class)->only(['index', 'show', 'store', 'update']);
 
+    Route::get('/calendar', [TaskController::class, 'calendar'])->name('calendar');
+    Route::get('/tasks/events', [TaskController::class, 'events'])->name('tasks.events');
     Route::resource('tasks', TaskController::class);
 });

@@ -17,6 +17,11 @@
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-list-check"></i></div>
                     Tareas
                 </a>
+
+                <a class="nav-link" href="{{ route('calendar') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                    Calendario
+                </a>
                 
                 <div class="sb-sidenav-menu-heading">Interface</div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
