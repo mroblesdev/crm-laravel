@@ -12,7 +12,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::where('active', 1)->get();
+        $clients = Client::where('active', 1)->paginate(10);
         return view('clients.index', compact('clients'));
     }
 
@@ -63,8 +63,14 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Client $client)
+    public function edit($id)
     {
+        $client = Client::find($id);
+
+        if (!$client) {
+            return view('clients.notfound');
+        }
+
         return view('clients.edit', compact('client'));
     }
 
