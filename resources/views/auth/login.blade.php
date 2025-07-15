@@ -24,7 +24,7 @@
                                     <h3 class="text-center font-weight-light my-4">Login</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ route('login') }}" method="post">
+                                    <form action="{{ route('authUser') }}" method="post">
                                         <div class="form-floating mb-3">
                                             @csrf
                                             <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" />
