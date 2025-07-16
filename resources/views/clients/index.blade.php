@@ -37,6 +37,7 @@
                     <td>{{ $client->email }}</td>
                     <td>{{ $client->user->name }}</td>
                     <td>
+                        <a class="btn btn-primary btn-sm" href="{{ route('clients.show', $client->id) }}">Detalles</a>
                         <a class="btn btn-warning btn-sm" href="{{ route('clients.edit', $client->id) }}">Editar</a>
 
                         <form action="{{ route('clients.destroy', $client->id) }}" method="post" style="display:inline">
