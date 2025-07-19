@@ -55,6 +55,12 @@ Sigue estos pasos para instalar y ejecutar el proyecto:
 8. **Accede a la aplicación**
     Abre tu navegador y visita [http://localhost:8000](http://localhost:8000)
 
+   **Datos de acceso**
+
+   - **Usuario:** admin@mail.com
+
+   - **Contraseña:** admin123
+
 
 ## Expresiones de Gratitud 🎁
 
