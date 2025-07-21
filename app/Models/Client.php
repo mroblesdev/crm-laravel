@@ -20,4 +20,9 @@ class Client extends Model
     {
         return $this->hasMany(Contact::class);
     }
+
+    public function followUps()
+    {
+        return $this->hasMany(FollowUps::class);
+    }
 }

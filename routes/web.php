@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FollowUpsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'showLogin'])->name('login');
@@ -23,4 +24,6 @@ Route::middleware(['auth'])->group(function () {
         Route::put('{contact}', [ContactController::class, 'update'])->name('update');
         Route::delete('{contact}', [ContactController::class, 'destroy'])->name('destroy');
     });
+
+    Route::resource('clients.followups', FollowUpsController::class)->only(['index', 'show', 'store', 'update']);
 });

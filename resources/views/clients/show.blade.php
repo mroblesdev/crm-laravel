@@ -10,6 +10,13 @@
 
 <hr>
 
+<div class="text-center">
+    <div class="btn-group">
+        <a href="" class="btn btn-primary active">Contactos</a>
+        <a href="{{ route('clients.followups.index', $client) }}" class="btn btn-outline-primary">Seguimientos</a>
+    </div>
+</div>
+
 <div class="p-3 m-4 bg-light">
     <h4>Contactos</h4>
 
