@@ -12,6 +12,11 @@
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-users-line"></i></div>
                     Clientes
                 </a>
+
+                 <a class="nav-link" href="{{ route('tasks.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-list-check"></i></div>
+                    Tareas
+                </a>
                 
                 <div class="sb-sidenav-menu-heading">Interface</div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
