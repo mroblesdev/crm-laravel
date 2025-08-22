@@ -4,9 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class ClientController extends Controller
+class ClientController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            new Middleware('permission:clientes', only: ['index']),
+            new Middleware('permission:clientes-crear', only: ['create', 'store']),
+            new Middleware('permission:clientes-editar', only: ['edit', 'update']),
+            new Middleware('permission:clientes-eliminar', only: ['destroy']),
+            new Middleware('permission:clientes-reingresar', only: ['activate']),
+        ];
+    }
     /**
      * Display a listing of the resource.
      */

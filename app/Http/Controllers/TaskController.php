@@ -7,11 +7,26 @@ use App\Http\Controllers\Controller;
 use App\Models\Client;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use SweetAlert2\Laravel\Swal;
 
-class TaskController extends Controller
+class TaskController extends Controller implements HasMiddleware
 {
+
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            new Middleware('permission:tareas', only: ['index']),
+            new Middleware('permission:tareas-crear', only: ['create', 'store']),
+            new Middleware('permission:tareas-editar', only: ['edit', 'update']),
+            new Middleware('permission:tareas-eliminar', only: ['destroy']),
+            new Middleware('permission:calendario', only: ['calendar', 'events']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */

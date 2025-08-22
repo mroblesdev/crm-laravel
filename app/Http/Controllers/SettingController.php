@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class SettingController extends Controller
+class SettingController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            new Middleware('permission:configuracion', only: ['index', 'store']),
+        ];
+    }
+    
     public function index()
     {
         $settings = Setting::all()->pluck('value', 'key')->toArray();

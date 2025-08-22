@@ -5,9 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\FollowUps;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class FollowUpsController extends Controller
+class FollowUpsController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            new Middleware('permission:seguimientos', only: ['index']),
+            new Middleware('permission:seguimientos-crear', only: ['create', 'store']),
+            new Middleware('permission:seguimientos-editar', only: ['edit', 'update']),
+            new Middleware('permission:seguimientos-eliminar', only: ['destroy']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
