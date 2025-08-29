@@ -24,6 +24,22 @@
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto me-3 me-lg-4">
             <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="notificacionesDropdown" role="button" data-bs-toggle="dropdown">
+                    <i class="fa-solid fa-bell"></i> <span id="count" class="badge bg-danger">{{ auth()->user()->unreadNotifications->count() }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificacionesDropdown">
+                    @foreach(auth()->user()->unreadNotifications as $notification)
+                    <li>
+                        <a class="dropdown-item" href="#" onclick="markAsRead('{{ $notification->id }}')">
+                            <strong>{{ $notification->data['title'] }}</strong><br>
+                            {{ $notification->data['description'] }}
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> {{ auth()->user()->name }}</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="{{ route('profile.show') }}">Perfil</a></li>
@@ -63,6 +79,24 @@
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
 
+    <script>
+        function markAsRead(id) {
+            fetch(`{{ url('/notifications/${id}/read') }}`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Validar si data.status existe y es 'ok'
+                    if (data && data.status === 'ok') {
+                        document.getElementById('count').innerText = data.count;
+                    }
+                });
+        }
+    </script>
     @stack('script')
 </body>
 

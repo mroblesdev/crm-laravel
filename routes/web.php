@@ -59,4 +59,6 @@ Route::middleware(['auth'])->group(function () {
 
     // CRUD de permisos
     Route::resource('permissions', PermissionController::class)->except(['show']);
+
+    Route::post('notifications/{id}/read', [TaskController::class, 'markAsRead'])->name('notifications.read');
 });
