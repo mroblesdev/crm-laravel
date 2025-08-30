@@ -39,6 +39,9 @@ class PermissionSeeder extends Seeder
             ['name' => 'Eliminar tareas', 'slug' => 'tareas-eliminar'],
             ['name' => 'Ver calendario', 'slug' => 'calendario'],
 
+            // Permisos de Configuración
+            ['name' => 'Configuración', 'slug' => 'configuracion'],
+
             // Permisos de usuarios
             ['name' => 'Ver usuarios', 'slug' => 'usuarios'],
             ['name' => 'Crear usuarios', 'slug' => 'usuarios-crear'],
