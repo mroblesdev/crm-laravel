@@ -12,9 +12,11 @@
 @endif
 
 <div class="row mb-3">
-    <div class="col-xl-3 col-md-6">
+    <div class="col-xl-6 col-md-6">
         <a href="{{ route('clients.create') }}" class="btn btn-primary">Nuevo</a>
         <a class="btn btn-warning" href="{{ route('clients.deleted') }}">Historial</a>
+        <a class="btn btn-success" href="{{ route('clients.export') }}">Exporta Excel</a>
+        <a class="btn btn-secondary" href="{{ route('clients.form-import') }}">Importar Clientes</a>
     </div>
 </div>
 

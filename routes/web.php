@@ -21,6 +21,10 @@ Route::middleware(['auth'])->group(function () {
     Route::put('clients/activate/{client}', [ClientController::class, 'activate'])->name('clients.activate');
     Route::get('clients/deleted', [ClientController::class, 'deleted'])->name('clients.deleted');
 
+    Route::get('clients/{id}/pdf', [ClientController::class, 'generatePdf'])->name('clients.pdf');
+    Route::get('clients/export/', [ClientController::class, 'exportExcel'])->name('clients.export');
+    Route::get('clients/form-import/', [ClientController::class, 'formUplodClientes'])->name('clients.form-import');
+    Route::post('clients/import/', [ClientController::class, 'import'])->name('clients.import');
     Route::resource('clients', ClientController::class);
 
     Route::prefix('clients/{client}')->name('clients.contacts.')->group(function () {

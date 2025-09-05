@@ -32,7 +32,7 @@
                     <li>
                         <a class="dropdown-item" href="#" onclick="markAsRead('{{ $notification->id }}')">
                             <strong>{{ $notification->data['title'] }}</strong><br>
-                            {{ $notification->data['description'] }}
+                            {{ $notification->data['due_date'] }}
                         </a>
                     </li>
                     @endforeach
