@@ -2,10 +2,8 @@
 
 @section('content')
 
-<h1 class="mt-4">Dashboard</h1>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Dashboard</li>
-</ol>
+<h2 class="my-4">Dashboard</h2>
+
 <div class="row">
     <div class="col-xl-3 col-md-6">
         <div class="card bg-success text-white mb-4">
@@ -50,7 +48,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 <h5>Tareas</h5>
-                <canvas id="myBarChart" width="100%" height="40"></canvas>
+                <canvas id="myBarChart" width="100%" height="35px"></canvas>
             </div>
         </div>
     </div>
