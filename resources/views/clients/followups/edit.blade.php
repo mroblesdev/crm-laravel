@@ -1,6 +1,6 @@
 <div class="modal fade" id="editFollowUpModal" tabindex="-1">
     <div class="modal-dialog">
-        <form method="post" id="editFormFollowUp">
+        <form method="post" id="editFormFollowUp" autocomplete="off">
             @csrf
             @method('PUT')
             <div class="modal-content">

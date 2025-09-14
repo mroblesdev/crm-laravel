@@ -4,7 +4,7 @@
 
 <h3 class="mt-3">Modificar contraseña</h3>
 
-<form action="{{ route('users.password.update', $user) }}" method="POST">
+<form action="{{ route('users.password.update', $user) }}" method="POST" autocomplete="off">
     @csrf
     @method('PUT')
 

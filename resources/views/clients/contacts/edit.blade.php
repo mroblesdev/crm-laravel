@@ -1,6 +1,6 @@
 <div class="modal fade" id="editContactModal" tabindex="-1">
     <div class="modal-dialog">
-        <form method="post" id="editFormContact">
+        <form method="post" id="editFormContact" autocomplete="off">
             @csrf @method('PUT')
             <div class="modal-content">
                 <div class="modal-header">

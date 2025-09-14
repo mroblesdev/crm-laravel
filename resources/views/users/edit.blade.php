@@ -14,7 +14,7 @@
 </div>
 @endif
 
-<form action="{{ route('users.update', $user) }}" method="POST">
+<form action="{{ route('users.update', $user) }}" method="POST" autocomplete="off">
     @csrf
     @method('PUT')
     <div class="mb-3">

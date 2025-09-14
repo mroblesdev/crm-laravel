@@ -8,7 +8,7 @@
 <div class="alert alert-success">{{ session('success') }}</div>
 @endif
 
-<form action="{{ route('users.permissions.update', $user) }}" method="POST">
+<form action="{{ route('users.permissions.update', $user) }}" method="POST" autocomplete="off">
     @csrf
     <div class="row">
         @foreach($permissions as $permission)

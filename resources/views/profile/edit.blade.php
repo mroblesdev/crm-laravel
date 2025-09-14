@@ -3,7 +3,7 @@
 @section('content')
 <h3 class="my-3">Editar Perfil</h3>
 
-<form method="POST" action="{{ route('profile.update') }}">
+<form method="POST" action="{{ route('profile.update') }}" autocomplete="off">
     @csrf
     <div class="form-group">
         <label for="name">Nombre</label>

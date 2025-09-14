@@ -37,14 +37,14 @@ Sigue estos pasos para instalar y ejecutar el proyecto:
    php artisan key:generate
    ```
 
-5. **Crea la base de datos y ejecuta las migraciones**
+5. **Ejecuta las migraciones y Seeder**
    ```sh
-   php artisan migrate
+   php artisan migrate --seed
    ```
 
-6. **(Opcional) Ejecuta los seeders para datos de ejemplo**
+6. **Crear enlaces simbolicos para imagenes cargadas**
    ```sh
-   php artisan db:seed
+   php artisan storage:link
    ```
 
 7. **Inicia el servidor de desarrollo**
@@ -58,7 +58,6 @@ Sigue estos pasos para instalar y ejecutar el proyecto:
    **Datos de acceso**
 
    - **Usuario:** admin@mail.com
-
    - **Contraseña:** admin123
 
 

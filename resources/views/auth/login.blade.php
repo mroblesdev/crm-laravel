@@ -12,7 +12,7 @@
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet" />
 </head>
 
-<body class="bg-secondary">
+<body class="bg-primary">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
@@ -24,7 +24,7 @@
                                     <h3 class="text-center font-weight-light my-4">Iniciar sesión</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ route('authUser') }}" method="post">
+                                    <form action="{{ route('authUser') }}" method="post" autocomplete="off">
                                         <div class="form-floating mb-3">
                                             @csrf
                                             <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" />

@@ -8,7 +8,7 @@
 <div class="alert alert-success">{{ session('success') }}</div>
 @endif
 
-<form method="POST" action="{{ route('settings.store') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('settings.store') }}" enctype="multipart/form-data" autocomplete="off">
     @csrf
     <ul class="nav nav-tabs">
         <li class="nav-item">

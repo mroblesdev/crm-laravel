@@ -1,6 +1,6 @@
 <div class="modal fade" id="createFollowUpModal" tabindex="-1">
     <div class="modal-dialog">
-        <form action="{{ route('clients.followups.store', $client) }}" method="post">
+        <form action="{{ route('clients.followups.store', $client) }}" method="post" autocomplete="off">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">

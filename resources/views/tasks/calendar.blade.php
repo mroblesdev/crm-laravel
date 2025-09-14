@@ -20,7 +20,7 @@
 <!-- Modal: Tarea -->
 <div class="modal fade" id="taskModal" tabindex="-1">
     <div class="modal-dialog">
-        <form>
+        <form  autocomplete="off">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5>Tarea</h5>
