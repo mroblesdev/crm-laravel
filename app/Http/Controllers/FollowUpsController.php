@@ -7,6 +7,7 @@ use App\Models\FollowUps;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Validator;
 
 class FollowUpsController extends Controller implements HasMiddleware
 {
@@ -36,12 +37,20 @@ class FollowUpsController extends Controller implements HasMiddleware
      */
     public function store(Request $request, Client $client)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
+            'type' => 'required',
             'subject' => 'required|max:255',
             'follow_up_date' => 'required|date'
         ]);
 
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
         $client->followUps()->create([
+            'type_follow_up_id' => $request->type,
             'subject' => $request->subject,
             'description' => $request->description,
             'follow_up_date' => $request->follow_up_date,
@@ -49,7 +58,9 @@ class FollowUpsController extends Controller implements HasMiddleware
             'user_id' => auth()->id()
         ]);
 
-        return back();
+        return response()->json([
+            'message' => 'Seguimiento creado correctamente'
+        ]);
     }
 
     /**
@@ -68,11 +79,13 @@ class FollowUpsController extends Controller implements HasMiddleware
     public function update(Request $request, Client $client, $followUpId)
     {
         $request->validate([
+            'type' => 'required',
             'subject' => 'required|max:255',
             'follow_up_date' => 'required|date'
         ]);
 
-        $followUp = FollowUps::find($followUpId);
+        $followUp = $client->followUps()->findOrFail($followUpId);
+        $followUp->type_follow_up_id = $request->type;
         $followUp->subject = $request->subject;
         $followUp->description = $request->description;
         $followUp->follow_up_date = $request->follow_up_date;

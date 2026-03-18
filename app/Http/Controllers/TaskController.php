@@ -37,7 +37,7 @@ class TaskController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::where('user_id', Auth::id())->get();
         return view('tasks.index', compact('tasks'));
     }
 
@@ -164,7 +164,7 @@ class TaskController extends Controller implements HasMiddleware
 
     public function events()
     {
-        $tasks = Task::select(['id', 'title', 'due_date as start'])->get();
+        $tasks = Task::where('user_id', Auth::id())->select(['id', 'title', 'due_date as start'])->get();
         return response()->json($tasks);
     }
 

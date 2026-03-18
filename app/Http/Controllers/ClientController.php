@@ -6,6 +6,7 @@ use App\Exports\ClientsExport;
 use App\Imports\ClientsImport;
 use App\Models\Client;
 use App\Models\Setting;
+use App\Models\TypeFollowUp;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -76,8 +77,10 @@ class ClientController extends Controller implements HasMiddleware
     public function show(Client $client)
     {
         $client->load('contacts');
+        $client->load('followUps');
+        $typeFollowUps = TypeFollowUp::all();
 
-        return view('clients.show', compact('client'));
+        return view('clients.show', compact('client', 'typeFollowUps'));
     }
 
     /**
@@ -145,7 +148,6 @@ class ClientController extends Controller implements HasMiddleware
 
     public function import(Request $resquest)
     {
-        print_r($resquest->file('file'));
         Excel::import(new ClientsImport, $resquest->file('file'));
 
         return redirect()->route('clients.index')->with('success', 'Carga masiva de clientes con éxito');

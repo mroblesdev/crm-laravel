@@ -1,5 +1,5 @@
 <div class="modal fade" id="deleteContactModal" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-sm">
         <form method="post" id="deleteContactForm">
             @csrf
             @method('DELETE')

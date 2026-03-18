@@ -20,3 +20,12 @@
         </form>
     </div>
 </div>
+
+@if ($errors->any())
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let modal = new bootstrap.Modal(document.getElementById('editFollowUpModal'));
+        //modal.show();
+    });
+</script>
+@endif

@@ -9,7 +9,7 @@ class FollowUps extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['client_id', 'user_id', 'subject', 'description', 'follow_up_date', 'status'];
+    protected $fillable = ['client_id', 'user_id', 'type_follow_up_id', 'subject', 'description', 'follow_up_date', 'status'];
 
     public function client()
     {
@@ -19,5 +19,10 @@ class FollowUps extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function typeFollowUp()
+    {
+        return $this->belongsTo(TypeFollowUp::class, 'type_follow_up_id');
     }
 }

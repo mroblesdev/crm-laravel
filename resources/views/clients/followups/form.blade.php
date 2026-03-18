@@ -1,6 +1,17 @@
 <div class="mb-3">
+    <label for="type" class="form-label">Tipo</label>
+    <select class="form-select" id="type" name="type">
+        @foreach($typeFollowUps as $type)
+        <option value="{{ $type->id }}">{{ $type->name }}</option>
+        @endforeach
+    </select>
+    <div class="invalid-feedback"></div>
+</div>
+
+<div class="mb-3">
     <label for="subject" class="form-label">Asunto</label>
     <input type="text" class="form-control" id="subject" name="subject" required>
+    <div class="invalid-feedback"></div>
 </div>
 
 <div class="mb-3">
@@ -11,6 +22,7 @@
 <div class="mb-3">
     <label for="follow_up_date" class="form-label">Fecha</label>
     <input type="date" class="form-control" id="follow_up_date" name="follow_up_date">
+    <div class="invalid-feedback"></div>
 </div>
 
 <div class="mb-3">

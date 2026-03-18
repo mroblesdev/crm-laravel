@@ -31,7 +31,10 @@ class ContactController extends Controller implements HasMiddleware
             'email' => 'nullable|email',
         ]);
 
-        $client->contacts()->create($request->all());
+        $client->contacts()->create([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
 
         return back()->with('success', 'Contacto agregado');
     }
@@ -54,7 +57,10 @@ class ContactController extends Controller implements HasMiddleware
             'email' => 'nullable|email',
         ]);
 
-        $contact->update($request->all());
+        $contact->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
         return back();
     }
 
